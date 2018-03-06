@@ -28,6 +28,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    NotificationService notificationService;
+
     @Override
     public OrderEntity doOrder(long restaurantId, OrderDTO order) throws OrderServiceException {
         OrderEntity orderEntity = new OrderEntity(order);
@@ -53,6 +56,7 @@ public class OrderServiceImpl implements OrderService {
                 }
             }
             restaurantRepository.save(restaurantEntity);
+            notificationService.notify(orderEntity);
         } else {
             throw new OrderServiceException("Restaurant not found with id: " + restaurantId);
         }

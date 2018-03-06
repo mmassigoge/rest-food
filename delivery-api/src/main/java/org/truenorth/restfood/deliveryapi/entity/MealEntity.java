@@ -1,4 +1,4 @@
-package org.truenorth.resfood.deliveryapi.entity;
+package org.truenorth.restfood.deliveryapi.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

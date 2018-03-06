@@ -1,4 +1,6 @@
-package org.truenorth.resfood.deliveryapi.entity;
+package org.truenorth.restfood.deliveryapi.entity;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,12 +14,14 @@ public class RestaurantEntity {
     private String logo;
     private String commercialName;
     private String legalName;
-    private float rating;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private double rating = 0;
     private String commercialEmail;
     private String adminNumber;
     private String address;
     private Double latitud;
     private Double longitud;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @OneToMany
     private List<ReviewEntity> reviews = new ArrayList<>();
     @ManyToMany
@@ -55,11 +59,11 @@ public class RestaurantEntity {
         this.legalName = legalName;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

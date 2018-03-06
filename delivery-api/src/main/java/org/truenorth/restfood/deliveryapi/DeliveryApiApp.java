@@ -1,4 +1,4 @@
-package org.truenorth.resfood.deliveryapi;
+package org.truenorth.restfood.deliveryapi;
 
 
 import org.springframework.boot.SpringApplication;

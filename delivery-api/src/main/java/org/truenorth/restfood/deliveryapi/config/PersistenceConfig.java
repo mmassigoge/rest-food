@@ -1,4 +1,4 @@
-package org.truenorth.resfood.deliveryapi.config;
+package org.truenorth.restfood.deliveryapi.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

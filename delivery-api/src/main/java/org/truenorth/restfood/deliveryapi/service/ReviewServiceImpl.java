@@ -23,8 +23,9 @@ public class ReviewServiceImpl implements ReviewService {
     public ReviewEntity doReview(long restaurantId, ReviewEntity review) throws ReviewServiceException {
         RestaurantEntity restaurantEntity = restaurantRepository.findOne(restaurantId);
         if (restaurantEntity != null) {
-            if (valildateReview(review)) {
+            if (validateReview(review)) {
                 try {
+                    review.setRestaurant(restaurantEntity);
                     review = reviewRepository.save(review);
                     restaurantEntity.getReviews().add(review);
                     OptionalDouble optionalRating = restaurantEntity
@@ -46,7 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
         return review;
     }
 
-    private boolean valildateReview(ReviewEntity review) throws ReviewServiceException {
+    private boolean validateReview(ReviewEntity review) throws ReviewServiceException {
         if(review!=null){
             if(0 <= review.getRating() && review.getRating() <= 5){
                 return true;

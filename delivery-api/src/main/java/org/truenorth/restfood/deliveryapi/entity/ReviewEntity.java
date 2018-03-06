@@ -2,10 +2,7 @@ package org.truenorth.restfood.deliveryapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ReviewEntity {
@@ -17,7 +14,9 @@ public class ReviewEntity {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String review;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private float rating;
+    private double rating;
+    @ManyToOne(optional = false)
+    private RestaurantEntity restaurant;
 
     public Long getId() {
         return id;
@@ -43,11 +42,19 @@ public class ReviewEntity {
         this.review = review;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public RestaurantEntity getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(RestaurantEntity restaurant) {
+        this.restaurant = restaurant;
     }
 }

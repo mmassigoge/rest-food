@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class RestaurantEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String logo;
     private String commercialName;
@@ -22,8 +22,10 @@ public class RestaurantEntity {
     private Double latitud;
     private Double longitud;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @OneToMany
+    @OneToMany(mappedBy = "restaurant")
     private List<ReviewEntity> reviews = new ArrayList<>();
+    @OneToMany(mappedBy = "restaurant")
+    private List<OrderEntity> orders = new ArrayList<>();
     @ManyToMany
     private List<MealEntity> meals = new ArrayList<>();
 
@@ -121,5 +123,14 @@ public class RestaurantEntity {
 
     public void setMeals(List<MealEntity> meals) {
         this.meals = meals;
+    }
+
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
     }
 }

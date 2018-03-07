@@ -1,5 +1,8 @@
 package org.truenorth.restfood.common;
 
+/**
+ * Common order message object for Meals
+ */
 public class MealMessage {
     private Long id;
     private String name;

@@ -3,6 +3,9 @@ package org.truenorth.restfood.common;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Common order message object for Orders
+ */
 public class OrderMessage {
     private Long id;
     private RestaurantMessage restaurant;

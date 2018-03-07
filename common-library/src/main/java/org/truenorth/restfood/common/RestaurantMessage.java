@@ -1,8 +1,8 @@
 package org.truenorth.restfood.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Common order message object for Restaurants
+ */
 public class RestaurantMessage {
     private Long id;
     private String logo;

@@ -1,6 +1,7 @@
 package org.truenorth.restfood.deliveryapi.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.truenorth.restfood.deliveryapi.dto.ReviewDTO;
 
 import javax.persistence.*;
 
@@ -17,6 +18,16 @@ public class ReviewEntity {
     private double rating;
     @ManyToOne(optional = false)
     private RestaurantEntity restaurant;
+
+    public ReviewEntity() {
+    }
+
+    public ReviewEntity(ReviewDTO reviewDto) {
+        this();
+        this.name = reviewDto.getName();
+        this.review = reviewDto.getReview();
+        this.rating = reviewDto.getRating();
+    }
 
     public Long getId() {
         return id;

@@ -2,6 +2,7 @@ package org.truenorth.restfood.deliveryapi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.truenorth.restfood.deliveryapi.dto.ReviewDTO;
 import org.truenorth.restfood.deliveryapi.entity.RestaurantEntity;
 import org.truenorth.restfood.deliveryapi.entity.ReviewEntity;
 import org.truenorth.restfood.deliveryapi.exception.ReviewServiceException;
@@ -20,10 +21,12 @@ public class ReviewServiceImpl implements ReviewService {
     ReviewRepository reviewRepository;
 
     @Override
-    public ReviewEntity doReview(long restaurantId, ReviewEntity review) throws ReviewServiceException {
+    public ReviewDTO doReview(long restaurantId, ReviewDTO reviewDto) throws ReviewServiceException {
+        ReviewEntity review = null;
         RestaurantEntity restaurantEntity = restaurantRepository.findOne(restaurantId);
         if (restaurantEntity != null) {
-            if (validateReview(review)) {
+            if (validateReview(reviewDto)) {
+                review = new ReviewEntity(reviewDto);
                 try {
                     review.setRestaurant(restaurantEntity);
                     review = reviewRepository.save(review);
@@ -44,10 +47,10 @@ public class ReviewServiceImpl implements ReviewService {
         } else {
             throw new ReviewServiceException("Restaurant not found with id: " + restaurantId);
         }
-        return review;
+        return reviewDto;
     }
 
-    private boolean validateReview(ReviewEntity review) throws ReviewServiceException {
+    private boolean validateReview(ReviewDTO review) throws ReviewServiceException {
         if(review!=null){
             if(0 <= review.getRating() && review.getRating() <= 5){
                 return true;

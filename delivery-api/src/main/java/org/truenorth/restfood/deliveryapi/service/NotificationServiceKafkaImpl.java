@@ -13,8 +13,11 @@ import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
 import org.truenorth.restfood.deliveryapi.entity.RestaurantEntity;
 import org.truenorth.restfood.deliveryapi.exception.NotificationServiceException;
 
+/**
+ * Notification Service based on Kafka queue that delegate notification process on another component like notification-service
+ */
 @Service
-public class NotificationServiceImpl implements NotificationService{
+public class NotificationServiceKafkaImpl implements NotificationService{
 
     private ObjectMapper mapper = new ObjectMapper();
 
@@ -24,8 +27,13 @@ public class NotificationServiceImpl implements NotificationService{
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    /**
+     * Build a json msg and send it to the orders kafka topic
+     * @param order
+     * @throws NotificationServiceException
+     */
     @Override
-    public void notify(OrderEntity order) throws NotificationServiceException {
+    public void notifyOrder(OrderEntity order) throws NotificationServiceException {
         try{
             OrderMessage message = toMessage(order);
             kafkaTemplate.send(ordersTopic, mapper.writeValueAsString(message));

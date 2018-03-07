@@ -1,6 +1,6 @@
 package org.truenorth.restfood.deliveryapi.entity;
 
-import org.truenorth.restfood.deliveryapi.service.OrderDTO;
+import org.truenorth.restfood.deliveryapi.dto.OrderDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class OrderEntity {
     public OrderEntity(){}
 
     public OrderEntity(OrderDTO orderDTO){
+        this();
         this.latitud = orderDTO.getLatitud();
         this.longitud = orderDTO.getLongitud();
         this.address = orderDTO.getAddress();

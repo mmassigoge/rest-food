@@ -4,17 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
 import org.truenorth.restfood.deliveryapi.entity.RestaurantEntity;
-import org.truenorth.restfood.deliveryapi.entity.ReviewEntity;
 import org.truenorth.restfood.deliveryapi.exception.NotificationServiceException;
 import org.truenorth.restfood.deliveryapi.exception.OrderServiceException;
-import org.truenorth.restfood.deliveryapi.exception.ReviewServiceException;
 import org.truenorth.restfood.deliveryapi.repository.MealRepository;
 import org.truenorth.restfood.deliveryapi.repository.OrderRepository;
 import org.truenorth.restfood.deliveryapi.repository.RestaurantRepository;
-import org.truenorth.restfood.deliveryapi.repository.ReviewRepository;
+import org.truenorth.restfood.deliveryapi.dto.OrderDTO;
 
 import java.util.Arrays;
-import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 
 @Service
@@ -57,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
                 }
             }
             restaurantRepository.save(restaurantEntity);
-            notificationService.notify(orderEntity);
+            notificationService.notifyOrder(orderEntity);
         } else {
             throw new OrderServiceException("Restaurant not found with id: " + restaurantId);
         }

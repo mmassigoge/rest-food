@@ -1,15 +1,27 @@
-package org.truenorth.restfood.deliveryapi.service;
+package org.truenorth.restfood.deliveryapi.dto;
 
 import org.truenorth.restfood.deliveryapi.entity.MealEntity;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Order DTO
+ */
 public class OrderDTO {
+    /**
+     * Expect a list of meals ids
+     */
+    @NotNull
     private long[] meals;
+    @NotNull
     private String address;
+    @NotNull
     private double latitud;
+    @NotNull
     private double longitud;
+    @NotNull
     private String mobile;
 
     public long[] getMeals() {

@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.truenorth.restfood.deliveryapi.dto.ReviewDTO;
 import org.truenorth.restfood.deliveryapi.entity.RestaurantEntity;
 import org.truenorth.restfood.deliveryapi.entity.ReviewEntity;
 import org.truenorth.restfood.deliveryapi.exception.ReviewServiceException;
@@ -43,18 +44,18 @@ public class ReviewServiceImplTest {
     @Test(expected = ReviewServiceException.class)
     public void doReviewInvalidReview() throws ReviewServiceException {
         when(restaurantRepository.findOne(1l)).thenReturn(new RestaurantEntity());
-        ReviewEntity reviewEntity = new ReviewEntity();
-        reviewEntity.setRating(6);
-        reviewService.doReview(1,reviewEntity);
+        ReviewDTO reviewDto = new ReviewDTO();
+        reviewDto.setRating(6);
+        reviewService.doReview(1,reviewDto);
     }
 
     @Test(expected = ReviewServiceException.class)
     public void doReviewSuccess() throws ReviewServiceException {
         RestaurantEntity restaurantEntity = new RestaurantEntity();
         when(restaurantRepository.findOne(1l)).thenReturn(restaurantEntity);
-        ReviewEntity reviewEntity = new ReviewEntity();
-        reviewEntity.setRating(2.5f);
-        reviewService.doReview(1,reviewEntity);
+        ReviewDTO reviewDto = new ReviewDTO();
+        reviewDto.setRating(2.5f);
+        reviewService.doReview(1,reviewDto);
         assertEquals(2.5f,restaurantEntity.getRating(),0);
     }
 }

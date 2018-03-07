@@ -1,10 +1,10 @@
-package org.truenorth.restfood.deliveryapi.controller;
+package org.truenorth.restfood.deliveryapi.dto;
 
-public class ETA {
+public class ETADTO {
 
     private String etaMessage;
 
-    public ETA(String etaMessage) {
+    public ETADTO(String etaMessage) {
         this.etaMessage = etaMessage;
     }
 

@@ -1,4 +1,4 @@
-package org.truenorth.restfood.deliveryapi.controller;
+package org.truenorth.restfood.deliveryapi.controller.handler;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

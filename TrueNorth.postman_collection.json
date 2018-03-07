@@ -1,0 +1,422 @@
+{
+	"info": {
+		"name": "TrueNorth",
+		"_postman_id": "37174b88-cd38-4e41-bf76-6e1c91c00072",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"logo\" : \"https%3A%2F%2Fwww.rd.com%2Fwp-content%2Fuploads%2F2017%2F08%2FAttention-Sushi-Lovers-There-Are-Rules-About-Eating-Japanese-Food-That-You-Must-Follow_644962144-760x506.jpg\",\n\t\"commercialName\" : \"Sushi Planet\",\n\t\"legalName\" : \"Sushi Planet Inc\",\n\t\"commercialEmail\" : \"sarasa@gmail.com\",\n\t\"adminNumber\" : \"(323)432254667\",\n\t\"address\": \"1350 Natoma Street, SF, CA, USA\",\n\t\"latitud\": 37.767562,\n    \"longitud\": -122.418539\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 PATCH",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"commercialEmail\" : \"info2@sushiplanet.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "meal GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/meal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"meal"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "meal 1 POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"sashimi\", \"description\": \"nice sashimi\", \"price\" : 15.0}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/meal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"meal"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "meal 2 POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"roll\", \"description\": \"sushi roll\",\"price\" : 10.0}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/meal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"meal"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 meals GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1/meals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1",
+						"meals"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 meals PUT",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/uri-list"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "http://localhost:8080/meal/2\nhttp://localhost:8080/meal/3"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1/meals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1",
+						"meals"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "meal 1 DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/meal/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"meal",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 review POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"matias\",\n\t\"review\" : \"nice place!\",\n\t\"rating\" : 4.5\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1/review",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1",
+						"review"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant 1 order POST",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"meals\": [2],\n\t\"address\" : \"my address\",\n\t\"latitud\": 37.777562,\n    \"longitud\": -122.428539,\n    \"mobile\": \"123-123-456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/1/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"1",
+						"order"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "restaurant filterByRating GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/search/findByRatingGreaterThanEqual?rating=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"search",
+						"findByRatingGreaterThanEqual"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "0",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

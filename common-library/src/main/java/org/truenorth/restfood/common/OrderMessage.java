@@ -1,34 +1,17 @@
-package org.truenorth.restfood.deliveryapi.entity;
+package org.truenorth.restfood.common;
 
-import org.truenorth.restfood.deliveryapi.service.OrderDTO;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class OrderEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class OrderMessage {
     private Long id;
-    @ManyToOne(optional = false)
-    private RestaurantEntity restaurant;
-    @ManyToMany
-    private List<MealEntity> meals = new ArrayList<>();
+    private RestaurantMessage restaurant;
+    private List<MealMessage> meals = new ArrayList<>();
     private double totalCost;
     private String address;
     private double latitud;
     private double longitud;
     private String mobile;
-
-    public OrderEntity(){}
-
-    public OrderEntity(OrderDTO orderDTO){
-        this.latitud = orderDTO.getLatitud();
-        this.longitud = orderDTO.getLongitud();
-        this.address = orderDTO.getAddress();
-        this.mobile = orderDTO.getMobile();
-    }
 
     public Long getId() {
         return id;
@@ -38,19 +21,19 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public RestaurantEntity getRestaurant() {
+    public RestaurantMessage getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(RestaurantEntity restaurant) {
+    public void setRestaurant(RestaurantMessage restaurant) {
         this.restaurant = restaurant;
     }
 
-    public List<MealEntity> getMeals() {
+    public List<MealMessage> getMeals() {
         return meals;
     }
 
-    public void setMeals(List<MealEntity> meals) {
+    public void setMeals(List<MealMessage> meals) {
         this.meals = meals;
     }
 
@@ -85,7 +68,6 @@ public class OrderEntity {
     public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
-
 
     public String getMobile() {
         return mobile;

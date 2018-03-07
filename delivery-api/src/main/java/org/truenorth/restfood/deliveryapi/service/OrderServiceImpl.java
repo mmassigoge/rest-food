@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
 import org.truenorth.restfood.deliveryapi.entity.RestaurantEntity;
 import org.truenorth.restfood.deliveryapi.entity.ReviewEntity;
+import org.truenorth.restfood.deliveryapi.exception.NotificationServiceException;
 import org.truenorth.restfood.deliveryapi.exception.OrderServiceException;
 import org.truenorth.restfood.deliveryapi.exception.ReviewServiceException;
 import org.truenorth.restfood.deliveryapi.repository.MealRepository;
@@ -32,7 +33,7 @@ public class OrderServiceImpl implements OrderService {
     NotificationService notificationService;
 
     @Override
-    public OrderEntity doOrder(long restaurantId, OrderDTO order) throws OrderServiceException {
+    public OrderEntity doOrder(long restaurantId, OrderDTO order) throws OrderServiceException, NotificationServiceException {
         OrderEntity orderEntity = new OrderEntity(order);
         RestaurantEntity restaurantEntity = restaurantRepository.findOne(restaurantId);
         if (restaurantEntity != null) {

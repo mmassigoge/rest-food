@@ -10,6 +10,7 @@ public class OrderDTO {
     private String address;
     private double latitud;
     private double longitud;
+    private String mobile;
 
     public long[] getMeals() {
         return meals;
@@ -41,5 +42,13 @@ public class OrderDTO {
 
     public void setLongitud(double longitud) {
         this.longitud = longitud;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

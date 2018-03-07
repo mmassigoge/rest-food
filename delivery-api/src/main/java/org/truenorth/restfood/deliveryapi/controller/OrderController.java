@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
 import org.truenorth.restfood.deliveryapi.entity.ReviewEntity;
 import org.truenorth.restfood.deliveryapi.exception.LogisticServiceException;
+import org.truenorth.restfood.deliveryapi.exception.NotificationServiceException;
 import org.truenorth.restfood.deliveryapi.exception.OrderServiceException;
 import org.truenorth.restfood.deliveryapi.service.LogisticService;
 import org.truenorth.restfood.deliveryapi.service.OrderDTO;
@@ -23,7 +24,7 @@ public class OrderController {
     private LogisticService logisticService;
 
     @PostMapping("restaurant/{restaurantId}/order")
-    public ETA doReview(@PathVariable long restaurantId, @RequestBody OrderDTO orderDto) throws OrderServiceException, LogisticServiceException {
+    public ETA doReview(@PathVariable long restaurantId, @RequestBody OrderDTO orderDto) throws OrderServiceException, LogisticServiceException, NotificationServiceException {
         OrderEntity order = orderService.doOrder(restaurantId, orderDto);
         return new ETA(logisticService.calculateETA(order));
     }

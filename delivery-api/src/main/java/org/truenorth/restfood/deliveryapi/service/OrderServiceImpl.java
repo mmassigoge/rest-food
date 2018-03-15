@@ -11,6 +11,7 @@ import org.truenorth.restfood.deliveryapi.repository.OrderRepository;
 import org.truenorth.restfood.deliveryapi.repository.RestaurantRepository;
 import org.truenorth.restfood.deliveryapi.dto.OrderDTO;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class OrderServiceImpl implements OrderService {
     NotificationService notificationService;
 
     @Override
+    @Transactional
     public OrderEntity doOrder(long restaurantId, OrderDTO order) throws OrderServiceException, NotificationServiceException {
         OrderEntity orderEntity = new OrderEntity(order);
         RestaurantEntity restaurantEntity = restaurantRepository.findOne(restaurantId);

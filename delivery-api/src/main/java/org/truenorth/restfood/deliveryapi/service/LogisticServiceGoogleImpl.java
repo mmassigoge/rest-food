@@ -7,6 +7,7 @@ import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.Duration;
 import com.google.maps.model.LatLng;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.truenorth.restfood.deliveryapi.dto.ETADTO;
 import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
@@ -17,6 +18,7 @@ import org.truenorth.restfood.deliveryapi.repository.OrderRepository;
 import org.truenorth.restfood.deliveryapi.repository.RestaurantRepository;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Date;
 
@@ -26,6 +28,8 @@ import java.util.Date;
 @Service
 public class LogisticServiceGoogleImpl implements LogisticService {
 
+    @Value("${google.api.key}")
+    private String apiKey;
 
     private GeoApiContext context;
 
@@ -35,7 +39,7 @@ public class LogisticServiceGoogleImpl implements LogisticService {
             synchronized (this) {
                 if (context == null) {
                     context = new GeoApiContext.Builder()
-                            .apiKey("AIzaSyBU6sSVUzpGim-aRdPjpzWWrFtDpDLR_cM")
+                            .apiKey(apiKey)
                             .build();
                 }
             }
@@ -43,6 +47,7 @@ public class LogisticServiceGoogleImpl implements LogisticService {
     }
 
     @Override
+    @Transactional(Transactional.TxType.NEVER)
     public ETADTO calculateETA(OrderEntity order) throws LogisticServiceException {
         if (validateOrder(order)) {
             try {

@@ -9,6 +9,7 @@ import org.truenorth.restfood.deliveryapi.exception.ReviewServiceException;
 import org.truenorth.restfood.deliveryapi.repository.RestaurantRepository;
 import org.truenorth.restfood.deliveryapi.repository.ReviewRepository;
 
+import javax.transaction.Transactional;
 import java.util.OptionalDouble;
 
 @Service
@@ -21,6 +22,7 @@ public class ReviewServiceImpl implements ReviewService {
     ReviewRepository reviewRepository;
 
     @Override
+    @Transactional
     public ReviewDTO doReview(long restaurantId, ReviewDTO reviewDto) throws ReviewServiceException {
         ReviewEntity review = null;
         RestaurantEntity restaurantEntity = restaurantRepository.findOne(restaurantId);

@@ -17,6 +17,7 @@ import org.truenorth.restfood.deliveryapi.repository.OrderRepository;
 import org.truenorth.restfood.deliveryapi.repository.RestaurantRepository;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Date;
 
@@ -43,6 +44,7 @@ public class LogisticServiceGoogleImpl implements LogisticService {
     }
 
     @Override
+    @Transactional(Transactional.TxType.NEVER)
     public ETADTO calculateETA(OrderEntity order) throws LogisticServiceException {
         if (validateOrder(order)) {
             try {

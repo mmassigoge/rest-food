@@ -7,6 +7,7 @@ import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.Duration;
 import com.google.maps.model.LatLng;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.truenorth.restfood.deliveryapi.dto.ETADTO;
 import org.truenorth.restfood.deliveryapi.entity.OrderEntity;
@@ -27,6 +28,8 @@ import java.util.Date;
 @Service
 public class LogisticServiceGoogleImpl implements LogisticService {
 
+    @Value("${google.api.key}")
+    private String apiKey;
 
     private GeoApiContext context;
 
@@ -36,7 +39,7 @@ public class LogisticServiceGoogleImpl implements LogisticService {
             synchronized (this) {
                 if (context == null) {
                     context = new GeoApiContext.Builder()
-                            .apiKey("AIzaSyBU6sSVUzpGim-aRdPjpzWWrFtDpDLR_cM")
+                            .apiKey(apiKey)
                             .build();
                 }
             }
